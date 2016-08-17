@@ -1,0 +1,5 @@
+#!/bin/bash
+
+service fcgiwrap start
+service overpass start
+service nginx start
