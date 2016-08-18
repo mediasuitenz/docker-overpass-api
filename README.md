@@ -17,6 +17,21 @@ docker build -t mediasuite/overpass-api:<TAG> .
 
 ## Example
 
-Get all ways that have a highway key value near [-36.9162, 174.8310](http://www.openstreetmap.org/?mlat=-36.91616249427225&mlon=174.831023812294&zoom=16) in JSON format.
+Get all ways that have a highway key value within 15 meter radius of [-36.9162, 174.8310](http://www.openstreetmap.org/?mlat=-36.91616249427225&mlon=174.831023812294&zoom=16) in JSON format.
+
+**Overpass QL**
+
+```
+[out:json][timeout:25];
+(
+  way
+  (
+    around:15,-36.9162,174.8310
+  )
+  ["highway"];
+  ._;>;
+);
+out;
+```
 
 <http://localhost/api/interpreter?data=%5Bout:json%5D%5Btimeout:25%5D;(way(around:15,-36.91616249427225,174.831023812294)%5B%22highway%22%5D;._;%3E;);out;>
