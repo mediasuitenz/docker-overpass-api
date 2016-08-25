@@ -1,2 +1,4 @@
+data
 *.osm
+*.osm.bz2.md5
 *.osm.pbf
