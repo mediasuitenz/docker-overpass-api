@@ -8,12 +8,12 @@ Download a OSM file in XML format compressed in bzip format and save as `planet.
 
 ```
 curl -o planet.osm.bz2 http://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.bz2
-docker build -t mediasuite/overpass-api:<TAG> .
+docker build -t mediasuite/overpass-api .
 ```
 
 ## Running the Docker image
 
-`docker run -d -p 80:80 mediasuite/overpass-api:<TAG>`
+`docker run -d -p 80:80 mediasuite/overpass-api`
 
 ## Example
 
