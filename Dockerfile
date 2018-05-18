@@ -24,6 +24,7 @@ RUN build_deps="g++ make expat libexpat1-dev zlib1g-dev curl" \
   && cd osm-3s_v* \
   && ./configure CXXFLAGS="-O3" --prefix="$EXEC_DIR" \
   && make install \
+  && sed -i 's/update_database /update_database --flush-size=1 /' /srv/osm3s/bin/init_osm3s.sh \
   && cd .. \
   && rm -rf osm-3s_v* \
   && apt-get purge -y --auto-remove $build_deps
