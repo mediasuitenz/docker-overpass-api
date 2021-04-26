@@ -13,7 +13,7 @@ docker build -t mediasuite/overpass-api .
 
 ## Running the Docker image
 
-`docker run -d -p 80:80 mediasuite/overpass-api`
+`docker run -p 81:81 overpass-api`
 
 ## Example
 
@@ -35,3 +35,7 @@ out;
 ```
 
 <http://localhost/api/interpreter?data=%5Bout:json%5D%5Btimeout:25%5D;(way(around:15,-36.91616249427225,174.831023812294)%5B%22highway%22%5D;._;%3E;);out;>
+
+## Troubleshoot
+- If error code is related to code 137 then it indicates process is killed due to the out of memery. Either start with smaller osm file, maybe for a smaller region, or change docker settings for the memory usage.
+- If error is related to no directory is found then this can be due to the blank characters in any of the file in windows. So, run `dos2unix.exe` on all 4 files (i.e. *Dockerfile , overpass, nginx.conf, docker-start)*

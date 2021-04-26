@@ -5,7 +5,7 @@ MAINTAINER Tom Fenton <tom@mediasuite.co.nz>
 # no tty
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG OSM_VER=0.7.54
+ARG OSM_VER=0.7.56.3
 ENV EXEC_DIR=/srv/osm3s
 ENV DB_DIR=/srv/osm3s/db
 
@@ -24,6 +24,7 @@ RUN build_deps="g++ make expat libexpat1-dev zlib1g-dev curl" \
   && cd osm-3s_v* \
   && ./configure CXXFLAGS="-O3" --prefix="$EXEC_DIR" \
   && make install \
+  && sed -i 's/update_database /update_database --flush-size=1 /' /srv/osm3s/bin/init_osm3s.sh \
   && cd .. \
   && rm -rf osm-3s_v* \
   && apt-get purge -y --auto-remove $build_deps
@@ -43,4 +44,4 @@ COPY docker-start /usr/local/sbin
 
 CMD ["/usr/local/sbin/docker-start"]
 
-EXPOSE 80
+EXPOSE 81
