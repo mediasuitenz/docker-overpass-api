@@ -5,7 +5,7 @@ MAINTAINER Tom Fenton <tom@mediasuite.co.nz>
 # no tty
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG OSM_VER=0.7.54
+ARG OSM_VER=0.7.56
 ENV EXEC_DIR=/srv/osm3s
 ENV DB_DIR=/srv/osm3s/db
 
